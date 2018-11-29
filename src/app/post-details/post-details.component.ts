@@ -18,17 +18,17 @@ export class PostDetailsComponent implements OnInit {
   content = "";
   constructor(private ps: PostService) { }
   ngOnInit() {
-
     this.ps.getPostsData().subscribe(data => {
       this.datasaver = data;
-      this.posts=[];
-
+      console.log(this.datasaver);
     });
   }
 
   onSearchPost(form: NgForm) {
     var k = 0;
     this.posts = this.datasaver;
+    console.log(this.posts);
+    console.log(this.datasaver);
     var indexes: any = [];
     for (let i in this.datasaver) {
       if (this.datasaver[i].title != form.value.search) {
@@ -40,15 +40,18 @@ export class PostDetailsComponent implements OnInit {
       while (k > 0) {
         k--;
         var removed = this.posts.splice(indexes[k], 1);
+        console.log(this.datasaver);
       }
     }
     form.resetForm();
+    this.ngOnInit();
   }
 
   onDelete(id: String) {
     console.log("Delete called " + id);
     this.ps.deletePost(id).subscribe(() => {
       this.ngOnInit();
+      this.posts=[];
     })
   }
 }

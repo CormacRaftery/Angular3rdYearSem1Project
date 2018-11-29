@@ -1,0 +1,19 @@
+<mat-card>
+  <form (submit)="onDelete(postForm)" #postForm="ngForm">
+    <mat-form-field>
+      <input
+        matInput
+        type="text"
+        name="password"
+        ngModel
+        required
+        minlength="3"
+        #title="ngModel">
+      <mat-error *ngIf="title.invalid">Please enter the password.</mat-error>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="accent"
+      type="submit">Delete All</button>
+  </form>
+</mat-card>

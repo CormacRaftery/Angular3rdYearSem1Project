@@ -16,6 +16,7 @@ import { MatInputModule,
   MatExpansionModule} from '@angular/material';
 import { PostCreateComponent } from './post-create/post-create.component';
 import { PostEditComponent } from './post-edit/post-edit.component';
+import { PostDeleteAllComponent } from './post-delete-all/post-delete-all.component';
 
 const appRoutes: Routes = [
   {
@@ -29,6 +30,10 @@ const appRoutes: Routes = [
   {
     path: 'edit/:id',
     component: PostEditComponent
+  },
+  {
+    path: 'deleteAll',
+    component: PostDeleteAllComponent
   }
 ];
 
@@ -38,7 +43,8 @@ const appRoutes: Routes = [
     AppComponent,
     PostDetailsComponent,
     PostCreateComponent,
-    PostEditComponent
+    PostEditComponent,
+    PostDeleteAllComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
