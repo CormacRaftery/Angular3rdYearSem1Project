@@ -49,8 +49,6 @@ app.post('/api/posts', function(req, res){
         content: req.body.content
     });
     res.json({message:"Item added"});
-
-
 })
 
 app.get('/api/posts', function(req, res){
