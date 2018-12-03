@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-//import { Router } from '@angular/router/src/router';
 import { ActivatedRoute } from '@angular/router';
 import { RouterModule, Routes, Router } from '@angular/router';
 import {PostService} from '../services/post.service';
@@ -12,9 +11,11 @@ import { NgForm } from "@angular/forms";
   styleUrls: ['./post-edit.component.css']
 })
 export class PostEditComponent implements OnInit {
+  //initialise variables
   post : any = [];
   myTitle : String; 
   myContent : String; 
+  myPassword : String;
   constructor(private router:Router, private route: ActivatedRoute, private service:PostService) { }
 
   ngOnInit() {
@@ -29,8 +30,10 @@ export class PostEditComponent implements OnInit {
     });
   }
   onEditPost(form: NgForm) {
-    this.service.updatePost(this.post._id, form.value.title, form.value.content).subscribe(() =>
+    //update all values
+    this.service.updatePost(this.post._id, form.value.title, form.value.content, form.value.password).subscribe(() =>
     {
+      //return to the list page
       this.router.navigate(['/list']);
     });
   }

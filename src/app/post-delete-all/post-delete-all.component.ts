@@ -10,7 +10,7 @@ import { NgForm } from "@angular/forms";
   styleUrls: ['./post-delete-all.component.css']
 })
 export class PostDeleteAllComponent implements OnInit {
-
+//initialise variables and hardcode developerPassword required to delete all posts
   developerPassword = "deleteAll";
   posts: any = [];
   title = "";
@@ -18,6 +18,7 @@ export class PostDeleteAllComponent implements OnInit {
   constructor(private ps: PostService) { }
   ngOnInit() {
     this.ps.getPostsData().subscribe(data => {
+      //get all data into posts
       this.posts = data;
       console.log(this.posts);
     });
@@ -27,6 +28,7 @@ export class PostDeleteAllComponent implements OnInit {
     console.log("Delete called ");
     if (this.developerPassword == form.value.password) {
       console.log("passwords match");
+      //if password is correct delete each post by id
       for (let i in this.posts) {
         this.onDeleting(this.posts[i]._id);
       }
